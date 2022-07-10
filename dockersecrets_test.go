@@ -20,7 +20,7 @@ func TestLoadSecrets(t *testing.T) {
 			content: "content_secret_2",
 		},
 	}
-	LoadSecrets("test/run/secrets")
+	_ = LoadSecrets("test/run/secrets")
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 
@@ -33,4 +33,13 @@ func TestLoadSecrets(t *testing.T) {
 			// expect var SECRET_2
 		})
 	}
+
+	// load files from non-existing directory should not fail
+
+	err := LoadSecrets("test/run/secrets/non-existing")
+
+	if err != nil {
+		t.Errorf("expected nil error, was %s", err)
+	}
+
 }

@@ -8,13 +8,17 @@ import (
 	"io/fs"
 )
 
-func LoadSecrets(_path string) {
+func LoadSecrets(_path string) error {
 	// load files in /run/secrets/ and expose values as environment variables
 
 	root := "/run/secrets"
 
 	if _path != "" {
 		root = _path
+	}
+
+	if _, err := os.Stat(root); os.IsNotExist(err) {
+		return nil
 	}
 
 	fileSystem := os.DirFS(root)
@@ -37,7 +41,5 @@ func LoadSecrets(_path string) {
 		return nil
 	})
 
-	if err != nil {
-		panic(err)
-	}
+	return err
 }
