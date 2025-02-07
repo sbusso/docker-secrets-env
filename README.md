@@ -1,5 +1,5 @@
 > [!WARNING]
-> Use `environment` attribute instead [https://docs.docker.com/reference/compose-file/secrets/](https://docs.docker.com/reference/compose-file/secrets/)
+> Use `environment` source instead [https://docs.docker.com/reference/compose-file/secrets/](https://docs.docker.com/reference/compose-file/secrets/)
 
 # Docker Secrets Env
 
